@@ -1,11 +1,9 @@
-name: A workflow for my Hello World file
+name: A workflow for my Hello World files
 on: push
 jobs:
   build:
-    name: Hello world action
+    name: Hello world Docker action
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: ./action-a
-        with:
-          MY_NAME: "Bilbo"
+      - uses: ./action-b_docker

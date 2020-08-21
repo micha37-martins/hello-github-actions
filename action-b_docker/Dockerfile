@@ -8,13 +8,13 @@ RUN $GITHUB_WORKSPACE
 RUN apk --no-cache add git build-base alsa-lib-dev alsa-utils alsa-utils-doc alsa-lib alsaconf
 
 #ADD go.mod .
-ADD GITHUB_WORKSPACE/go.sum .
-ADD GITHUB_WORKSPACE/Makefile .
+ADD $GITHUB_WORKSPACE/go.sum .
+ADD $GITHUB_WORKSPACE/Makefile .
 
 RUN make deps
 
-ADD GITHUB_WORKSPACE/cmd/ cmd/
-ADD GITHUB_WORKSPACE/internal/ internal/
-ADD GITHUB_WORKSPACE/soundfiles/ soundfiles/
+ADD $GITHUB_WORKSPACE/cmd/ cmd/
+ADD $GITHUB_WORKSPACE/internal/ internal/
+ADD $GITHUB_WORKSPACE/soundfiles/ soundfiles/
 
 RUN make test

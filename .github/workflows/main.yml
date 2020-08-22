@@ -13,4 +13,4 @@ jobs:
         run: pwd
       - name: HOME
         run: echo $HOME
-      - uses: ./action-b_docker
+      - uses: ./.github/actions/action-b_docker

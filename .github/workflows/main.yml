@@ -9,8 +9,6 @@ jobs:
         uses: actions/checkout@v2
       - name: lsa
         run: ls -a
-      - name: pwd
-        run: pwd
-      - name: HOME
+      - name: $GITHUB_WORKSPACE
         run: echo $HOME
       - uses: ./.github/actions/action-b_docker

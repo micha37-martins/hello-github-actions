@@ -1,6 +1,6 @@
 FROM golang:1.14.6-alpine3.12 as golang-builder
 
-RUN pwd && echo $HOME && ls -a $HOME
+RUN pwd && echo $HOME && ls -a
 RUN echo $GITHUB_REPOSITORY
 RUN echo $GITHUB_WORKSPACE
 RUN ls -a $GITHUB_WORKSPACE
@@ -11,7 +11,7 @@ RUN ls -a $GITHUB_WORKSPACE
 # go.sum & go.mod only exist if gocode have dependencies
 # ADD $GITHUB_WORKSPACE/go.mod .
 # ADD $GITHUB_WORKSPACE/go.sum .
-COPY Makefile .
+COPY ./Makefile .
 
 RUN make test
 

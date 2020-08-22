@@ -1,6 +1,7 @@
 FROM golang:1.14.6-alpine3.12 as golang-builder
 
-RUN ls -a
+RUN ls -a bin
+RUN ls -a src
 RUN echo workspace:
 RUN ls $GITHUB_WORKSPACE
 

@@ -14,12 +14,12 @@ RUN ls $GITHUB_WORKSPACE
 # go.sum & go.mod only exist if gocode have dependencies
 # ADD $GITHUB_WORKSPACE/go.mod .
 # ADD $GITHUB_WORKSPACE/go.sum .
-ADD Makefile .
+COPY Makefile .
 
 RUN make test
 
-ADD cmd/ cmd/
-ADD internal/ internal/
-ADD soundfiles/ soundfiles/
+COPY cmd/ cmd/
+COPY internal/ internal/
+COPY soundfiles/ soundfiles/
 
 RUN make test

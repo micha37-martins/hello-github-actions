@@ -1,7 +1,7 @@
 name: A workflow for my Hello World files
 on: push
 jobs:
-  build:
+  testing_playground:
     name: Hello world Docker action
     runs-on: ubuntu-latest
     steps:
@@ -13,4 +13,4 @@ jobs:
         run: pwd
       - name: HOME
         run: echo $HOME
-     #- uses: ./action-b_docker
+      - uses: ./action-b_docker

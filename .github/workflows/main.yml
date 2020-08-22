@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: playground
-      - uses: ./action-b_docker
+        run: ls -a
+        run: pwd
+        run: echo $HOME
+     #- uses: ./action-b_docker

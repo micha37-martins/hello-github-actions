@@ -1,0 +1,7 @@
+name: "Hello Actions with Docker"
+description: "Cover me!"
+author: "micha37"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"

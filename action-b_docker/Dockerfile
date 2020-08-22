@@ -1,8 +1,9 @@
 FROM golang:1.14.6-alpine3.12 as golang-builder
 
+RUN echo PWD:
+RUN pwd
 RUN echo GITHUBWORKSPACE:
-RUN ls ../$GITHUB_WORKSPACE
-RUN ls ../../$GITHUB_WORKSPACE
+RUN ls -a ../$GITHUB_WORKSPACE
 
 # use --no-cache to not cache the index locally
 # RUN apk --no-cache add git build-base alsa-lib-dev alsa-utils alsa-utils-doc alsa-lib alsaconf

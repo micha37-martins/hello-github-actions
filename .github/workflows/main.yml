@@ -10,5 +10,5 @@ jobs:
       - name: lsa
         run: ls -a
       - name: $GITHUB_WORKSPACE
-        run: echo $HOME
+        run: echo $GITHUB_WORKSPACE
       - uses: ./.github/actions/action-b_docker

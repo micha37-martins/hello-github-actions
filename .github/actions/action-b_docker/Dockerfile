@@ -1,22 +1,11 @@
+# This Dockerfile adds required dependencies to the alpine image
 FROM golang:1.14.6-alpine3.12 as golang-builder
 
-RUN pwd && echo $HOME && ls -a
-RUN echo $GITHUB_REPOSITORY
-RUN echo $GITHUB_WORKSPACE
-RUN ls -a $GITHUB_WORKSPACE
-
 # use --no-cache to not cache the index locally
-# RUN apk --no-cache add git build-base alsa-lib-dev alsa-utils alsa-utils-doc alsa-lib alsaconf
+RUN apk --no-cache add git build-base alsa-lib-dev alsa-utils alsa-utils-doc alsa-lib alsaconf
 
-# go.sum & go.mod only exist if gocode have dependencies
-# ADD $GITHUB_WORKSPACE/go.mod .
-# ADD $GITHUB_WORKSPACE/go.sum .
-COPY ./Makefile .
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY entrypoint.sh /entrypoint.sh
 
-RUN make test
-
-COPY cmd/ cmd/
-COPY internal/ internal/
-COPY soundfiles/ soundfiles/
-
-RUN make test
+# Code file to execute when the docker container starts up (`entrypoint.sh`)
+ENTRYPOINT ["/entrypoint.sh"]

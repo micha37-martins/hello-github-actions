@@ -2,8 +2,11 @@ FROM golang:1.14.6-alpine3.12 as golang-builder
 
 RUN echo PWD:
 RUN pwd
-RUN echo GITHUBWORKSPACE:
-RUN ls -a ../$GITHUB_WORKSPACE
+RUN echo $HOME
+RUN ls -a ../$HOME
+RUN echo $GITHUB_REPOSITORY
+RUN echo $GITHUB_WORKSPACE
+RUN ls $GITHUB_WORKSPACE
 
 # use --no-cache to not cache the index locally
 # RUN apk --no-cache add git build-base alsa-lib-dev alsa-utils alsa-utils-doc alsa-lib alsaconf
@@ -15,8 +18,8 @@ ADD Makefile .
 
 RUN make test
 
-ADD $GITHUB_WORKSPACE/cmd/ cmd/
-ADD $GITHUB_WORKSPACE/internal/ internal/
-ADD $GITHUB_WORKSPACE/soundfiles/ soundfiles/
+ADD cmd/ cmd/
+ADD internal/ internal/
+ADD soundfiles/ soundfiles/
 
 RUN make test

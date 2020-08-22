@@ -7,8 +7,9 @@ RUN $GITHUB_WORKSPACE
 # use --no-cache to not cache the index locally
 RUN apk --no-cache add git build-base alsa-lib-dev alsa-utils alsa-utils-doc alsa-lib alsaconf
 
-#ADD go.mod .
-ADD $GITHUB_WORKSPACE/go.sum .
+ADD $GITHUB_WORKSPACE/go.mod .
+# go.sum only exist if gocode have dependencies
+# ADD $GITHUB_WORKSPACE/go.sum .
 ADD $GITHUB_WORKSPACE/Makefile .
 
 RUN make deps
